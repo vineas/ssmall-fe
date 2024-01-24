@@ -9,12 +9,25 @@ const CardTop = () => {
         axios.get(`https://ssmall-be.vercel.app/products`)
             .then((res) => {
                 setProduct(res.data.data);
+                // console.log(res.data.data);
                 console.log(res.data.data);
             })
             .catch((err) => {
                 console.log(err);
             })
     }, [])
+
+    const handleAddCart = () => {
+        axios
+          .post(`https://ssmall-be.vercel.app/cart/`)
+          .then(() => {
+            alert("Add complete.");
+            window.location.reload();
+          })
+          .catch((error) => {
+            console.error("Error during like:", error);
+          });
+      };
     
     return (
         <div className='container mx-auto mt-10'>
@@ -39,6 +52,7 @@ const CardTop = () => {
                                     <div className='px-4 pb-4'>
                                         <button
                                             type="button"
+                                            onClick={handleAddCart} key={product.product_id}
                                             className="text-white bg-blue-700 hover:bg-blue-800 font-small rounded-lg text-sm px-5 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                         >
                                             Add to Cart

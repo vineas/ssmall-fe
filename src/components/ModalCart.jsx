@@ -19,6 +19,16 @@ const ModalCart = () => {
             })
     }, [])
 
+    const handleDelete = (cart_id) => {
+        axios.delete(`https://ssmall-be.vercel.app/cart/${cart_id}`)
+            .then(() => {
+                alert("Deleted")
+            })
+            .catch((err) => {
+                alert(err);
+            })
+    }
+
     return (
         <div>
             <button
@@ -52,7 +62,7 @@ const ModalCart = () => {
                                     </span>
                                 </button>
                             </div>
-                            <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                            <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none" key={cart.cart_id}>
                                 {/*body*/}
                                 {products.map((product, index) => (
                                     <div className='rounded-lg shadow-lg bg-white'>
@@ -79,6 +89,7 @@ const ModalCart = () => {
                                                                 Checkout
                                                             </button>
                                                         </div>
+                                                        <form onSubmit={handleDelete}>
                                                         <div className='px-4 pb-4'>
                                                             <button
                                                                 type="submit"
@@ -91,6 +102,7 @@ const ModalCart = () => {
                                                                 />
                                                             </button>
                                                         </div>
+                                                        </form>
                                                     </div>
                                                 </div>
                                             </div>
