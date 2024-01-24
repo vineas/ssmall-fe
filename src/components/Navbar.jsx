@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
+import ModalCart from './ModalCart'
 const logo = require('../assets/img/logo.png')
 const cart = require('../assets/img/Vector.png')
 
@@ -45,14 +46,14 @@ const Navbar = () => {
                                     </div>
                                 </div>
 
-                                <div className="flex flex-shrink-0 items-center">
+                                {/* <div className="flex flex-shrink-0 items-center">
                                     <img
                                         className="h-8 w-auto p-1"
                                         src={cart}
                                         alt="Your Company"
                                     />
-                                </div>
-                                {/* Profile dropdown */}
+                                </div> */}
+                                <ModalCart/>
                                 <div className="relative ml-3">
                                     <div>
                                         <button

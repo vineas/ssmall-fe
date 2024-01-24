@@ -50,7 +50,6 @@ const CardTop = () => {
                     </div>
                 ))}
 
-
             </div>
         </div>
     );
